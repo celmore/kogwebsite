@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>King of Glory Pentecostal Assembly - Who We Are</title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <img src="circle.png" alt="King of Glory" />
+      <h2>King of Glory Pentecostal Assembly</h2>
+      <h3>“Our Services”</h3>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="location.html">Location</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="welcome">
+      <h1>Welcome to King of Glory Pentecostal Assembly</h1>
+      <div id="videos"></div>
+
+
+      <!-- <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/pWVEFFv4pFE?si=yQ0OKLfxDBRdIyFF&amp;clip=UgkxgECzqu8Jyg2F4WGh39_tWGQeThwH5gRZ&amp;clipt=EPOCzQEY4JvOAQ"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+
+      <div class="sections">
+
+        <div class="card">
+          <h2>Service Times</h2>
+          Video Services
+        </div>
+
+        <div class="card">
+          <h2>Ministries</h2>
+          <p>• Children’s Ministry</p>
+          <p>• Youth & Teen Ministry</p>
+          <p>• Outreach & Community Support</p>
+        </div>
+
+        <div class="card">
+          <h2>Visit Us</h2>
+          <p>202 170th Street East</p>
+          <p>Spanaway, WA 98387</p>
+          <p><strong>Email:</strong> info@kog.com</p>
+          <p><strong>Phone:</strong> (253) 536-3708</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 King of Glory Pentecostal Assembly — All Rights Reserved
+    </footer>
+<script>
+const apiKey = "AQ.Ab8RN6Ktey6vPR6iDhmV7XkzSGI5YliHSS2cv1mPfunHlCQS9w";
+const channelId = "UCE7eohKCjaDZWTdEmjGWhCg";
+const maxResults = 6;
+
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&id&order=date&maxResults=${maxResults}`)
+  .then(response => response.json())
+  .then(data => {
+    let html = "";
+    data.items.forEach(item => {
+      const videoId = item.id.videoId;
+      html += `
+        <iframe width="360" height="215"
+          src="https://www.youtube.com/embed/${videoId}"
+          frameborder="0" allowfullscreen>
+        </iframe>
+      `;
+    });
+    document.getElementById("videos").innerHTML = html;
+  });
+</script>
+</body>
+
+</html>

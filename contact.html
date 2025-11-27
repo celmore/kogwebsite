@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>King of Glory Pentecostal Assembly - Who We Are</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <img src="circle.png" alt="King of Glory" />
+      <h2>King of Glory Pentecostal Assembly</h2>
+      <h3>“We Are Closer Then You Think”</h3>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="location.html">Location</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="welcome">
+      <h1>Welcome to King of Glory Pentecostal Assembly</h1>
+    </div>
+     <div class="contact form">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="contact-form" novalidate>
+  <div class="row">
+    <label for="fullName">Full name *</label>
+    <input id="fullName" formControlName="fullName" type="text" />
+    <small *ngIf="form.get('fullName')?.touched && form.get('fullName')?.invalid">
+      Please enter your name (max 100 chars).
+    </small>
+  </div>
+
+  <div class="row two-col">
+    <div>
+      <label for="email">Email *</label>
+      <input id="email" formControlName="email" type="email" />
+      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Enter a valid email.</small>
+    </div>
+
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" formControlName="phone" type="tel" />
+      <small *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">Enter a valid phone number (optional).</small>
+    </div>
+  </div>
+
+  <div class="row two-col">
+    <div>
+      <label for="subject">Subject *</label>
+      <select id="subject" formControlName="subject">
+        <option *ngFor="let s of subjects" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="preferredContact">Preferred contact</label>
+      <select id="preferredContact" formControlName="preferredContact">
+        <option>Email</option>
+        <option>Phone</option>
+        <option>Text</option>
+        <option>No follow-up</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row two-col">
+    <div>
+      <label for="bestTime">Best time to contact</label>
+      <select id="bestTime" formControlName="bestTime">
+        <option>Morning</option>
+        <option>Afternoon</option>
+        <option>Evening</option>
+        <option>Anytime</option>
+      </select>
+    </div>
+
+    <div>
+        <div class="checkbox-field">
+          <input id="isFirstTimeVisitor" type="checkbox" formControlName="isFirstTimeVisitor" />
+          <label for="isFirstTimeVisitor">First-time visitor?</label>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="heardAbout">How did you hear about us?</label>
+    <input id="heardAbout" formControlName="heardAbout" type="text" />
+  </div>
+
+  <div class="row">
+    <label for="message">Message / Prayer request *</label>
+    <textarea id="message" formControlName="message" rows="6"></textarea>
+    <small *ngIf="form.get('message')?.touched && form.get('message')?.invalid">
+      Please enter a message between 10 and 2000 characters.
+    </small>
+  </div>
+
+  <div class="row">
+    <label for="attachment">Attachment (optional)</label>
+    <input id="attachment" type="file" (change)="onFileChange($event)" />
+    <small>Max size recommended 10MB. Allowed: images, pdfs, docs.</small>
+  </div>
+
+  <div class="row actions">
+    <button type="submit" [disabled]="submitting">{{ submitting ? 'Sending...' : 'Send message' }}</button>
+  </div>
+
+  <p class="status" *ngIf="submissionMessage">{{ submissionMessage }}</p>
+</form>
+      <!-- <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required> 
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Submit</button> -->
+     </div>
+
+
+  </div>
+
+  <footer>
+    &copy; 2025 King of Glory Pentecostal Assembly — All Rights Reserved
+  </footer>
+
+</body>
+
+</html>
